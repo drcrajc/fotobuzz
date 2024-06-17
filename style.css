@@ -1,0 +1,62 @@
+// Dummy data for initial buzzes (posts)
+const initialBuzzes = [
+  { id: 1, content: 'First buzz! 🐝', image: 'buzz1.jpg', likes: 10, comments: [
+    { id: 1, content: 'Honey Sting! 🍯', type: 'positive' },
+    { id: 2, content: 'Poison Sting! 😡', type: 'negative' }
+  ] },
+  { id: 2, content: 'Buzzing around! 🌼', image: 'buzz2.jpg', likes: 15, comments: [
+    { id: 3, content: 'Sweet Sting! 🌟', type: 'positive' }
+  ] }
+];
+
+// Function to display initial buzzes (posts)
+function displayInitialBuzzes() {
+  const buzzFeed = document.getElementById('buzzFeed');
+  initialBuzzes.forEach(buzz => {
+    const buzzHTML = `
+      <article class="buzz">
+        <p>${buzz.content}</p>
+        <img src="${buzz.image}" alt="Buzz Image">
+        <div class="interactions">
+          <button onclick="likeBuzz(${buzz.id})">${buzz.likes} Likes</button>
+          <button>❤️</button>
+          <button>Share</button>
+        </div>
+        <ul class="comments">
+          ${buzz.comments.map(comment => `
+            <li class="${comment.type === 'positive' ? 'honey-sting' : 'poison-sting'}">${comment.content}</li>
+          `).join('')}
+        </ul>
+        <form class="comment-form" onsubmit="postComment(event, ${buzz.id})">
+          <input type="text" placeholder="Write a sting...">
+          <button type="submit">Sting</button>
+        </form>
+      </article>
+    `;
+    buzzFeed.innerHTML += buzzHTML;
+  });
+}
+
+// Function to like a buzz (post)
+function likeBuzz(buzzId) {
+  // Logic to increment likes and update UI (dummy example)
+  console.log(`Liked buzz with ID ${buzzId}`);
+}
+
+// Function to post a comment (sting)
+function postComment(event, buzzId) {
+  event.preventDefault();
+  const commentInput = event.target.querySelector('input[type="text"]');
+  const commentContent = commentInput.value;
+  // Logic to post comment (dummy example)
+  console.log(`Posted comment '${commentContent}' on buzz with ID ${buzzId}`);
+  // Update UI: Append new comment to the buzz (dummy example)
+  const commentHTML = `<li class="honey-sting">${commentContent}</li>`;
+  event.target.parentElement.querySelector('.comments').innerHTML += commentHTML;
+  commentInput.value = '';
+}
+
+// Display initial buzzes (posts) on page load
+document.addEventListener('DOMContentLoaded', function() {
+  displayInitialBuzzes();
+});

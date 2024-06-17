@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fotobuzz - Share Your Buzz!</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="bee_logo.png" alt="Fotobuzz Logo">
+      <h1>Fotobuzz</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Notifications</a></li>
+        <li><a href="#">Friends</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section class="post-form">
+      <h2>Create a Buzz</h2>
+      <form id="buzzForm">
+        <textarea id="buzzContent" placeholder="Write your buzz..."></textarea>
+        <input type="file" id="buzzImage" accept="image/*">
+        <button type="submit">Post Buzz</button>
+      </form>
+    </section>
+    
+    <section id="buzzFeed">
+      <!-- Buzzes (posts) will be dynamically added here -->
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Fotobuzz. All rights reserved.</p>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
